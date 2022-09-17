@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "definitions": {
+    "Options": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Descriptive title of the file",
+          "type": "string",
+          "default": "Untitled"
+        },
+        "sizes": {
+          "description": "2-tuple describing the size of two panes, one with the expressions and the other one with results",
+          "type": "array",
+          "items": [
+              {
+                "description": "Size of the expressions pane, in percentages",
+                "type": "number"
+              },
+              {
+                "description": "Size of the results pane, in percentages",
+                "type": "number"
+              }
+            ],
+          "default": [70, 30]
+        },
+        "expressions": {
+          "description": "Array containing the expressions and optionally their result formatting guidelines",
+          "type": "object",
+          "properties": {
+            "content": {
+              "description": "Full content of the expression",
+              "type": "string"
+            },
+            "index": {
+              "description": "Indeger corresponding to the expression's index, used internally for ordering purposes",
+              "type": "number"
+            },
+            "precision": {
+              "description": "Integer describing the precision to which the numeric result should be rounded, overriding any global settings",
+              "type": "number",
+              "minimum": 1,
+              "maximum": 16,
+              "default": 3
+            }
+          }
+        }
+      }
+    }
+  },
+  "title": "JSON schema for Parsify files",
+  "type": "object",
+  "readOnly": true
+}
